@@ -15,20 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Static Routes
-Route::get('/', 
-    [\App\Http\Controllers\AppController::class, 'index']
-)->name('index');
-
-Route::get('/dashboard', 
-    [\App\Http\Controllers\AppController::class, 'dashboard']
-)->name('dashboard');
-
-Route::get('/quizz', 
-    [\App\Http\Controllers\AppController::class, 'quizz']
-)->name('app_quizz');
+Route::get('/', [\App\Http\Controllers\AppController::class, 'index'])->name('index');
+Route::get('/dashboard', [\App\Http\Controllers\AppController::class, 'dashboard'])->name('dashboard');
+Route::get('/quizz', [\App\Http\Controllers\AppController::class, 'quizz'])->name('app_quizz');
+Route::post('/quizz', [\App\Http\Controllers\AppController::class, 'quizzSubmit'])->name('app_quizz_submit');
+Route::get('/result', [\App\Http\Controllers\AppController::class, 'result'])->name('result');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Google Login

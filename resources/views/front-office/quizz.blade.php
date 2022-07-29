@@ -12,7 +12,9 @@
                           Repondez a ce questionnaire
                         </div>
                         <div class="card-body">
-                            <form class=" bg-white px-4 needs-validation" action="" novalidate>
+                            <form class=" bg-white px-4 needs-validation" method="POST" novalidate>
+                                @csrf  
+                                @method('POST')
                                 <p class="fw-bold">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
                                 <div class="form-check mb-2">
                                   <input class="form-check-input" type="radio" name="first-option" id="first-option-1" required value='1'/>
