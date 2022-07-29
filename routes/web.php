@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Static Routes
+Route::get('/', 
+    [\App\Http\Controllers\AppController::class, 'index']
+)->name('index');
+
+Route::get('/dashboard', 
+    [\App\Http\Controllers\AppController::class, 'dashboard']
+)->name('dashboard');
+
+Route::get('/quizz', 
+    [\App\Http\Controllers\AppController::class, 'quizz']
+)->name('app_quizz');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Google Login
+Route::get('login/google', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle']
+)->name('login.google');
+Route::get('login/google/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback']);
+
+// // Facebook Login
+Route::get('login/facebook', [\App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook']
+)->name('login.facebook');
+Route::get('login/facebook/callback', [\App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
